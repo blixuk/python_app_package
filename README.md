@@ -1,2 +1,1 @@
-# python_app_package
-Python App Package
+# Python App Package
