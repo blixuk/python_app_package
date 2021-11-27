@@ -8,15 +8,25 @@ class App:
 	def __init__(self):
 		pass
 
+	@cmd.command(
+		cmd.argument("-v", "--verbose", action="store_true", help="verbose"),
+		cmd.argument("-o", "--output", help="output"),
+		cmd.argument("-A", "--another", action="store_true", help="Another Option"),
+	)
+	def main(self, args):
+		print(args)
+
 	@cmd.subcommand()
 	def nothing(self, args):
 		'''This does nothing special'''
 		print("Nothing special!")
 
 	@cmd.subcommand(cmd.argument("-d", help="Debug mode"), cmd.argument("-n", help="No mode", action="store_true"))
-	def test(self, args):
+	def debug(self, args):
 		if args.d:
 			print(args.d)
+		elif args.n:
+			print("No mode")
 		else:
 			print(args)
 
